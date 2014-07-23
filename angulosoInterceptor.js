@@ -53,7 +53,6 @@ function callResponse(response){
     var resultJSON = JSON.stringify(response.data, null , '\t');
     $("#" + id(response)).attr('title',resultJSON);
 
-    hide(id(response));
 }
 
 function callRequest(request){
@@ -84,14 +83,8 @@ function callRequest(request){
 }
 
 function close(id){
-    $("#" + id).fadeOut(200);
+    $("#" + id).fadeOut(1000);
 }
-
-function hide(id){
-    setTimeout(function() {
-        $("#" + id).fadeOut(1000);
-    },3000)
-};
 
 function id(response){
     return response.config.anguloso.id;
