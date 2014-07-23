@@ -6,7 +6,10 @@
     "Matheus Messora <tqi_mmessora@uolinc.com>"
   ],
   "description": "Anguloso is a HTTPInterceptor for AngularJS. It renders basic information about ajax requests",
-  "main": "angulosoInterceptor.js",
+  "main": [
+    "angulosoInterceptor.js",
+    "anguloso.css"
+  ],
   "keywords": [
     "angularJS"
   ],
