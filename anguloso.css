@@ -11,17 +11,17 @@
 	opacity: 0.7;
 }
 
-#anguloso .request {
+#anguloso .anRequest {
 	color: #FFF;
 	font-size: 12px;
 	padding: 2px 0;
 
 }
 
-#anguloso .success {
+#anguloso .anSuccess {
 	background: green;
 }
 
-#anguloso .error {
+#anguloso .anError {
 	background: red;
 }
