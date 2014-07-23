@@ -30,9 +30,21 @@ anguloso.config(
 );
 anguloso.run(function(){
     $("<div id='anguloso'></div>").appendTo("body");
+    $("#anguloso").append(hider());
+
+    $("#angulosoHider").click(function() {
+        showHide();
+    });
 });
 
+function hider(){
+    return new Array(
+    "<div id='angulosoHider'>",
+        "<button type='button' class='btn btn-primary btn-sm'><span class='glyphicon glyphicon-close'></span>=</button>",
+    "</div>",
 
+    "").join(" ");
+}
 
 function callResponseError(responseError){
     var seconds = ((new Date() - responseError.config.anguloso.requestTime)/1000)%60;
@@ -51,7 +63,7 @@ function callResponse(response){
     $("#" + id(response)).delay(3000).addClass('anSuccess', {duration: 1000});
 
     var resultJSON = JSON.stringify(response.data, null , '\t');
-    $("#" + id(response)).attr('title',resultJSON);
+    $("#" + id(response) + " .anUrl").attr('title',resultJSON);
 
 }
 
@@ -66,24 +78,50 @@ function callRequest(request){
     };
     $("#anguloso").append(new Array(
       "<div class='col-lg-24 anRequest' id='" + id + "'>",
+        "<div class='col-lg-1 anClose' style='float:left;'>",
+            "<button type='button' class='btn btn-danger btn-xs'>",
+            "<span class='glyphicon glyphicon-close'></span>X",
+            "</button>",
+        "</div>",
       "<div class='col-lg-10 anUrl' style='float:left;'>/api/login</div>",
       "<div class='col-lg-2 anStatus' style='float:left;'></div>",
       "<div class='col-lg-2 anMethod' style='float:left;'>GET</div>",
       "<div class='col-lg-2 anTime' style='float:left;'></div>",
-      "<div class='col-lg-2 anClose' style='float:left;'>CLOSE</div>",
-      "</div>"
-      ).join(" "));
+      "").join(" "));
+
     $("#" + id + " .anUrl").html(request.anguloso.url);
     $("#" + id + " .anMethod").html(request.anguloso.method);
 
+
+    // Annimations
     $("#" + id + " .anClose").click(function() {
         close(id);
     });
 
+
+
+}
+
+function showHide(){
+    if($("#anguloso").is(":hidden")){
+        $("#anguloso").show("slow");
+        $("#angulosoHider").show("slow");
+    }else {
+        $("#anguloso").slideUp();
+        $("#angulosoHider").remove();
+
+        $(hider()).appendTo("body");
+        // $("body").append(hider());
+
+        $("#angulosoHider").click(function() {
+            showHide();
+        });
+    }
+
 }
 
 function close(id){
-    $("#" + id).fadeOut(1000);
+    $("#" + id).remove();
 }
 
 function id(response){

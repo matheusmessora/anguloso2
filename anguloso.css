@@ -3,23 +3,33 @@
 #anguloso {
 	position: fixed;
 	bottom: 0px;
-	z-index: 9999;
+	z-index: 9990;
 	vertical-align: baseline;
 	margin: 0;
 	width: 100%;
 
 	opacity: 0.7;
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	border-top: #035EAD 1px solid;
+}
+
+#anguloso #angulosoHider {
+	position: fixed;
+	z-index: 9991;
+	right: 10%;
+	margin-top: -26px;
+
 }
 
 #anguloso .anRequest {
 	color: #FFF;
-	font-size: 12px;
+	font-size: 14px;
 	padding: 2px 0;
     background: orange;
 }
 
 #anguloso .anSuccess {
-	background: green;
+	background:#026E18;
 }
 
 #anguloso .anError {
