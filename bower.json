@@ -1,0 +1,21 @@
+{
+  "name": "anguloso2",
+  "version": "0.0.0",
+  "homepage": "https://github.com/matheusmessora/anguloso2",
+  "authors": [
+    "Matheus Messora <tqi_mmessora@uolinc.com>"
+  ],
+  "description": "Anguloso is a HTTPInterceptor for AngularJS. It renders basic information about ajax requests",
+  "main": "angulosoInterceptor.js",
+  "keywords": [
+    "angularJS"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
