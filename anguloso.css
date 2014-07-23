@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
 #anguloso {
-	
+	position: fixed;
+	bottom: 0px;
+	z-index: 9999;
+	vertical-align: baseline;
+	margin: 0;
 }
