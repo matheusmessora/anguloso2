@@ -77,3 +77,10 @@ anguloso.config(
         );
     }
 );
+
+anguloso.run(function(){
+    
+    // Include div for anguloso
+    $("<div id='anguloso'></div>").appendTo("body");
+
+});
