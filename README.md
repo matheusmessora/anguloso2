@@ -19,6 +19,9 @@ It intercepts every request and response from Angular $http service. Then, using
 2. Insert Anguloso as a module of your AngularAPP.
 > var yourApp = angular.module('yourApp', ['anguloso']);
 
+3. Include angulosoInterceptor as **httpInterceptor**
+> $httpProvider.interceptors.push('angulosoInterceptor');
+
 ##Depends on
 
 * AngularJS
