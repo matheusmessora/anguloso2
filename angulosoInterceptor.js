@@ -18,6 +18,8 @@ anguloso.config(
                         var resultJSON = JSON.stringify(responseError.data, null , '\t');
                         $("#" + id(responseError)).attr('title',resultJSON);
 
+                        return responseError;
+
                     },
                     response: function(response) {
 
