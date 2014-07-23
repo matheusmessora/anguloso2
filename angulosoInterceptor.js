@@ -9,27 +9,25 @@ anguloso.config(
 
                 return {
                     responseError: function(responseError) {
-                        console.debug("responseError", responseError);
 
                         var seconds = ((new Date() - responseError.config.anguloso.requestTime)/1000)%60;
-                        $("#" + responseError.config.anguloso.id + " .time").html(seconds + "s");
-                        $("#" + responseError.config.anguloso.id + " .status").html(responseError.status)
-                        $("#" + responseError.config.anguloso.id).delay(3000).addClass('error', {duration: 1000});
-                        $("#" + responseError.config.anguloso.id).delay(3000).addClass('error', {duration: 1000});
+                        $("#" + id(responseError) + " .time").html(seconds + "s");
+                        $("#" + id(responseError) + " .status").html(responseError.status)
+                        $("#" + id(responseError)).addClass('error');
+                        $("#" + id(responseError)).addClass('error');
                         var resultJSON = JSON.stringify(responseError.data, null , '\t');
-                        $("#" + responseError.config.anguloso.id).attr('title',resultJSON);
+                        $("#" + id(responseError)).attr('title',resultJSON);
 
                     },
                     response: function(response) {
-                        console.debug("response", response);
 
                         var seconds = ((new Date() - response.config.anguloso.requestTime)/1000)%60;
-                        $("#" + response.config.anguloso.id + " .time").html(seconds + "s");
-                        $("#" + response.config.anguloso.id + " .status").html(response.status)
-                        $("#" + response.config.anguloso.id).delay(3000).addClass('active', {duration: 1000});
+                        $("#" + id(response) + " .time").html(seconds + "s");
+                        $("#" + id(response) + " .status").html(response.status)
+                        $("#" + id(response)).delay(3000).addClass('success', {duration: 1000});
 
                         var resultJSON = JSON.stringify(response.data, null , '\t');
-                        $("#" + response.config.anguloso.id).attr('title',resultJSON);
+                        $("#" + id(response)).attr('title',resultJSON);
 
                         return response;
                     },
@@ -44,7 +42,7 @@ anguloso.config(
 
                         };
                         $("#anguloso").append(new Array(
-                          "<div class='col-lg-24' id='" + id + "'>",
+                          "<div class='col-lg-24 request' id='" + id + "'>",
                           "<div class='col-lg-10 url' style='float:left;'>/api/login</div>",
                           "<div class='col-lg-4 status' style='float:left;'></div>",
                           "<div class='col-lg-4 method' style='float:left;'>GET</div>",
@@ -55,19 +53,22 @@ anguloso.config(
                         $("#" + id + " .method").html(request.anguloso.method);
 
 
-                        console.debug("request", request);
                         return request;
                     }
                 } 
                 function makeid(){
-                      var text = "";
-                      var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+                    var text = "";
+                    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-                      for( var i=0; i < 5; i++ )
-                          text += possible.charAt(Math.floor(Math.random() * possible.length));
+                    for( var i=0; i < 5; i++ )
+                        text += possible.charAt(Math.floor(Math.random() * possible.length));
 
-                      return text;
-                    }
+                    return text;
+                }
+
+                function id(response){
+                    return response.config.anguloso.id;
+                }
 
                 
             } 
