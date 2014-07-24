@@ -29,18 +29,20 @@ anguloso.config(
     }
 );
 anguloso.run(function(){
-    $("<div id='anguloso'></div>").appendTo("body");
-    $("#anguloso").append(hider());
+    $(createAngulosoHTML()).appendTo("body");
+    // $("<div id='anguloso'></div>").appendTo("#angulosoHolder");
+    // $(hider()).appendTo("#angulosoHolder");
 
     $("#angulosoHider").click(function() {
         showHide();
     });
 });
 
-function hider(){
+function createAngulosoHTML(){
     return new Array(
-    "<div id='angulosoHider'>",
-        "<button type='button' class='btn btn-primary btn-sm'><span class='glyphicon glyphicon-close'></span>=</button>",
+    "<div id='angulosoHolder'>",
+        "<div id='angulosoHider'><button id='angulosoHiderBtn' type='button' class='btn btn-primary btn-sm'>Anguloso &#9776;</button></div>",
+        "<div id='anguloso'></div>",
     "</div>",
 
     "").join(" ");
@@ -54,6 +56,9 @@ function callResponseError(responseError){
     $("#" + id(responseError)).addClass('anError');
     var resultJSON = JSON.stringify(responseError.data, null , '\t');
     $("#" + id(responseError)).attr('title',resultJSON);
+
+    console.log(responseError);
+    show();
 }
 
 function callResponse(response){
@@ -64,6 +69,8 @@ function callResponse(response){
 
     var resultJSON = JSON.stringify(response.data, null , '\t');
     $("#" + id(response) + " .anUrl").attr('title',resultJSON);
+
+    console.log(response);
 
 }
 
@@ -104,24 +111,24 @@ function callRequest(request){
 
 function showHide(){
     if($("#anguloso").is(":hidden")){
-        $("#anguloso").show("slow");
-        $("#angulosoHider").show("slow");
+        show();
     }else {
-        $("#anguloso").slideUp();
-        $("#angulosoHider").remove();
-
-        $(hider()).appendTo("body");
-        // $("body").append(hider());
-
-        $("#angulosoHider").click(function() {
-            showHide();
-        });
+        hide();
     }
+}
 
+function show(){
+    $("#anguloso").slideDown();
+    $("#angulosoHiderBtn").html("Anguloso &#9776;");
+}
+
+function hide(){
+    $("#anguloso").slideUp();
+    $("#angulosoHiderBtn").html("&#9776;");
 }
 
 function close(id){
-    $("#" + id).remove();
+    $("#" + id).fadeOut("fast");
 }
 
 function id(response){

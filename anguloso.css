@@ -1,11 +1,16 @@
 @charset "UTF-8";
 
-#anguloso {
+#angulosoHolder {
 	position: fixed;
 	bottom: 0px;
 	z-index: 9990;
 	vertical-align: baseline;
 	margin: 0;
+	width: 100%;
+}
+
+#anguloso {
+	position: relative;
 	width: 100%;
 
 	opacity: 0.7;
@@ -13,12 +18,9 @@
 	border-top: #035EAD 1px solid;
 }
 
-#anguloso #angulosoHider {
-	position: fixed;
+#angulosoHider {
+	position: relative;
 	z-index: 9991;
-	right: 10%;
-	margin-top: -26px;
-
 }
 
 #anguloso .anRequest {
@@ -31,6 +33,11 @@
 #anguloso .anSuccess {
 	background:#026E18;
 }
+
+#anguloso .anError .anStatus {
+	font-weight: bold;
+}
+
 
 #anguloso .anError {
 	background: red;
