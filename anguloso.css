@@ -28,6 +28,7 @@
 	font-size: 14px;
 	padding: 2px 0;
     background: orange;
+    border-bottom: 1px solid DeepSkyBlue;
 }
 
 #anguloso .anSuccess {
@@ -41,4 +42,39 @@
 
 #anguloso .anError {
 	background: red;
+}
+
+#anguloso .anExpand {
+	font-size: 10px;
+	display: none;
+	background: #000;
+	color: #FFF;
+	font-family: monospace;
+	padding: 2px;
+}
+
+
+
+
+/*****************
+JSON PRETTY PRINT
+******************/
+.anExpand pre {
+	border: 0;
+	background: #000;
+	padding: 1px 2px;
+	line-height: 1;
+	margin: 2px;
+}
+.json-key {
+	font-weight: bold;
+	color: SkyBlue;
+}
+.json-value {
+	font-weight: bold;
+	color: tomato;
+}
+.json-string {
+	font-weight: bold;
+	color: wheat;
 }

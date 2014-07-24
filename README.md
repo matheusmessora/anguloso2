@@ -22,8 +22,11 @@ It intercepts every request and response from Angular $http service. Then, using
 3. Include angulosoInterceptor as **httpInterceptor**
 > $httpProvider.interceptors.push('angulosoInterceptor');
 
+4.  Voilà
+
 ##Depends on
 
 * AngularJS
 * jQuery
+* Bootstrap 3
 

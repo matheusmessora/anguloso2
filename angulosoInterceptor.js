@@ -29,13 +29,15 @@ anguloso.config(
     }
 );
 anguloso.run(function(){
-    $(createAngulosoHTML()).appendTo("body");
+    // $(createAngulosoHTML()).appendTo("body");
     // $("<div id='anguloso'></div>").appendTo("#angulosoHolder");
     // $(hider()).appendTo("#angulosoHolder");
 
     $("#angulosoHider").click(function() {
         showHide();
     });
+
+
 });
 
 function createAngulosoHTML(){
@@ -57,6 +59,8 @@ function callResponseError(responseError){
     var resultJSON = JSON.stringify(responseError.data, null , '\t');
     $("#" + id(responseError)).attr('title',resultJSON);
 
+    addExtra(id(responseError), responseError);
+
     console.log(responseError);
     show();
 }
@@ -69,6 +73,7 @@ function callResponse(response){
 
     var resultJSON = JSON.stringify(response.data, null , '\t');
     $("#" + id(response) + " .anUrl").attr('title',resultJSON);
+    addExtra(id(response), response);
 
     console.log(response);
 
@@ -90,9 +95,14 @@ function callRequest(request){
             "<span class='glyphicon glyphicon-close'></span>X",
             "</button>",
         "</div>",
+        "<div class='col-lg-1 anExpandBtn' style='float:left;'>",
+            "<button type='button' class='btn btn-success btn-xs'>",
+            "<span class='glyphicon glyphicon-close'></span>&#9776;",
+            "</button>",
+        "</div>",
       "<div class='col-lg-10 anUrl' style='float:left;'>/api/login</div>",
       "<div class='col-lg-2 anStatus' style='float:left;'></div>",
-      "<div class='col-lg-2 anMethod' style='float:left;'>GET</div>",
+      "<div class='col-lg-2 anMethod' style='float:left;'></div>",
       "<div class='col-lg-2 anTime' style='float:left;'></div>",
       "").join(" "));
 
@@ -107,8 +117,55 @@ function callRequest(request){
 
 
 
+    $("#" + id + " .anExpandBtn").click(function() {
+        expand(id);
+    });
+
+
 }
 
+function addExtra(id, request){
+    var resultJSON = getPrettyJSON(request.data);
+    $("#" + id).before("<div id='" + id + "_expand' class='col-lg-24 anExpand'><pre><code>" + resultJSON + "</code></pre></div>");
+}
+
+function getPrettyJSON(json){
+    // http://jsfiddle.net/unLSJ/
+    var library = {};
+
+    library.json = {
+        replacer: function(match, pIndent, pKey, pVal, pEnd) {
+            var key = '<span class=json-key>';
+            var val = '<span class=json-value>';
+            var str = '<span class=json-string>';
+            var r = pIndent || '';
+            if (pKey)
+             r = r + key + pKey.replace(/[": ]/g, '') + '</span>: ';
+            if (pVal)
+             r = r + (pVal[0] == '"' ? str : val) + pVal + '</span>';
+            return r + (pEnd || '');
+            },
+        prettyPrint: function(obj) {
+            var jsonLine = /^( *)("[\w]+": )?("[^"]*"|[\w.+-]*)?([,[{])?$/mg;
+            return JSON.stringify(obj, null, 3)
+            .replace(/&/g, '&amp;').replace(/\\"/g, '&quot;')
+            .replace(/</g, '&lt;').replace(/>/g, '&gt;')
+            .replace(jsonLine, library.json.replacer);
+            }
+    };
+
+    return library.json.prettyPrint(json);
+
+}
+
+function expand(id){
+    if($("#" + id + "_expand").is(":hidden")){
+       $("#" + id + "_expand").slideDown();
+   }
+    else {
+        $("#" + id + "_expand").slideUp();
+    }
+}
 function showHide(){
     if($("#anguloso").is(":hidden")){
         show();
