@@ -29,7 +29,7 @@ anguloso.config(
     }
 );
 anguloso.run(function(){
-    // $(createAngulosoHTML()).appendTo("body");
+    $(createAngulosoHTML()).appendTo("body");
     // $("<div id='anguloso'></div>").appendTo("#angulosoHolder");
     // $(hider()).appendTo("#angulosoHolder");
 
@@ -78,6 +78,8 @@ function callResponse(response){
     console.log(response);
 
 }
+
+
 
 function callRequest(request){
     var id = makeid();
