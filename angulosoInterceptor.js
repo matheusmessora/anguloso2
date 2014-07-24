@@ -188,6 +188,7 @@ function hide(){
 
 function close(id){
     $("#" + id).fadeOut("fast");
+    $("#" + id + "_expand").fadeOut("fast");
 }
 
 function id(response){
