@@ -30,3 +30,19 @@ It intercepts every request and response from Angular $http service. Then, using
 * jQuery
 * Bootstrap 3
 
+
+
+========
+>     
+/**
+     * Works by GOD LAWs
+     * */
+    void rotate()
+    {
+        Vector3 target = rigidbody.velocity;
+        float angle = Mathf.Atan2(target.y, target.x) * Mathf.Rad2Deg;
+        // rotate to angle
+        Quaternion rotation = new Quaternion();
+        rotation.eulerAngles = new Vector3(0, 0, angle - 90);
+        transform.rotation = rotation;
+    }
