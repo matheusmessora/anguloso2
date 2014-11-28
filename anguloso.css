@@ -92,12 +92,18 @@ JSON PRETTY PRINT
 /*****************
 CONSOLER
 ******************/
-#consoler {
+#consolerHolder {
 	position: relative;
 	width: 100%;
-
-	opacity: 0.7;
 	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
-	border-top: #035EAD 1px solid;
-
 }
+#consoler {
+    background: #FFF;
+    color: #000;
+    font-size: 12px;
+    border-top: #e8242c 1px solid;
+}
+#consoler .row {
+    border-bottom: 1px solid #f1f1f1;   
+}
+
