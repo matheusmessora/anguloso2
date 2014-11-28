@@ -7,6 +7,7 @@
   ],
   "description": "Anguloso is a HTTPInterceptor for AngularJS. It renders basic information about ajax requests",
   "main": [
+    "pandox.js",
     "angulosoInterceptor.js",
     "anguloso.css"
   ],
