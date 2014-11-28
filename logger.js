@@ -14,10 +14,10 @@ LOGGER = function () {
         $("#angulosoConsoler").click(function () {
             showHide();
         });
-        log("LOGGER.init.success");
+        info("LOGGER.init.success");
     };
     
-    function log(message){
+    function info(message){
         appendLog("info", message);
     };
     
@@ -26,7 +26,10 @@ LOGGER = function () {
     };
     
     var appendLog = function(level, message){
-        $("#consoler").append('<div class="row"><div class="col-lg-24 ' +getCssClassFromLogLevel(level)+ '">' + message + '</div></div>');
+        $("#consoler").append('<div class="row"><div class="col-lg-24 ' +getCssClassFromLogLevel(level)+ '"><span class="label label-warning consoler-close">X</span> ' + message + '</div></div>');
+        $(".consoler-close").click(function () {
+            $(this).parent().parent().remove();
+        });
     };
     
     var getCssClassFromLogLevel = function(level){
@@ -59,7 +62,7 @@ LOGGER = function () {
 
     return {
         init: init,
-        log: log,
+        info: info,
         error: error
     }
 }();
