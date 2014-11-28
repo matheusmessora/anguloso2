@@ -30,12 +30,13 @@ anguloso.config(
 );
 anguloso.run(function(){
     $(createAngulosoHTML()).appendTo("body");
-    // $("<div id='anguloso'></div>").appendTo("#angulosoHolder");
-    // $(hider()).appendTo("#angulosoHolder");
 
+    hide();
     $("#angulosoHider").click(function() {
         showHide();
     });
+
+    PANDOX.CONSOLE.init();
 
 
 });
@@ -44,7 +45,9 @@ function createAngulosoHTML(){
     return new Array(
     "<div id='angulosoHolder'>",
         "<div id='angulosoHider'><button id='angulosoHiderBtn' type='button' class='btn btn-primary btn-sm'>Anguloso &#9776;</button></div>",
+        "<div id='angulosoConsoler'><button id='angulosoConsoleBtn' type='button' class='btn btn-danger btn-sm'>Console &#9776;</button></div>",
         "<div id='anguloso'></div>",
+        "<div id='consoler'></div>",
     "</div>",
 
     "").join(" ");

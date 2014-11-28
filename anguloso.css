@@ -19,8 +19,15 @@
 }
 
 #angulosoHider {
-	position: relative;
-	z-index: 9991;
+    position: relative;
+    z-index: 9991;
+    width: auto;
+    float: left;
+}
+#angulosoConsoler {
+    position: relative;
+    z-index: 9991;
+    float: left;
 }
 
 #anguloso .anRequest {
@@ -77,4 +84,20 @@ JSON PRETTY PRINT
 .json-string {
 	font-weight: bold;
 	color: wheat;
+}
+
+
+
+
+/*****************
+CONSOLER
+******************/
+#consoler {
+	position: relative;
+	width: 100%;
+
+	opacity: 0.7;
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	border-top: #035EAD 1px solid;
+
 }
